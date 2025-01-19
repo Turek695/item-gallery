@@ -16,7 +16,14 @@ try {
 
 	// Enable PDO exceptions for error handling
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	echo "Database connection successful!";
+
+	$query = "SELECT id, name, pictures FROM items";
+	$statement = $pdo->prepare($query);
+	$statement->execute();
+
+	$items = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+	echo json_encode($items);
 } catch (PDOException $e) {
 	die("Database connection failed: " . $e->getMessage());
 }
