@@ -12,17 +12,23 @@ function App() {
     const [gallery, setGallery] = useState<Item[]>([]);
 
     useEffect(() => {
-        axios
-            .get("https://galeria.lukaszturowski.xyz/api/getGallery.php")
-            .then((response) => setGallery(response.data))
-            .catch((error) => console.error("Error fetching gallery:", error));
+        const fetchGallery = async () => { 
+            try {
+                const res = await axios.get("https://galeria.lukaszturowski.xyz/api/getGallery.php");
+                setGallery(res.data);
+            } catch(error) {
+                console.error("Error fetching gallery:", error)
+            };
+        }
+
+        fetchGallery();
     }, []);
 
     const listItems = gallery.map((item: Item) => <li>{item.name}</li>);
 
     return (
         <>
-            <h1>Galeria</h1>
+            <h1 data-testid="page_title">Galeria</h1>
             <ul>{listItems}</ul>
         </>
     );
