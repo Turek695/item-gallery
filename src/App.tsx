@@ -5,8 +5,9 @@ import axios from "axios";
 function App() {
     interface Item {
         name: string;
-        category: string;
-        picture_id: number;
+        category?: string;
+        pictures: string;
+        id: number;
     }
 
     const [gallery, setGallery] = useState<Item[]>([]);
@@ -24,7 +25,7 @@ function App() {
         fetchGallery();
     }, []);
 
-    const listItems = gallery.map((item: Item) => <li>{item.name}</li>);
+    const listItems = gallery.map((item: Item) => <li key={item.id}>{item.name}</li>);
 
     return (
         <>
