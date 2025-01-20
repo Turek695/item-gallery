@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, MockedFunction } from "vitest";
 import axios from "axios";
 import App from "./App";
 
@@ -14,10 +14,11 @@ describe("App component", () => {
 
 	it("fetches and displays gallery items", async () => {
 		const mockData = [
-			{ name: "Item 1", category: "Category 1", picture_id: 1 },
-			{ name: "Item 2", category: "Category 2", picture_id: 2 },
-		];
-		axios.get.mockResolvedValue({ data: mockData });
+            { id: 1, name: "Wazon Zielony", pictures: '["1_1.jpg", "1_2.jpg"]' },
+            { id: 2, name: "Szklanki niebieskie", pictures: '["2_1.jpg", "2_2.jpg"]' },
+        ];
+
+		(axios.get as MockedFunction<typeof axios.get>).mockResolvedValue({ data: mockData });
 
 		render(<App />);
 
@@ -28,7 +29,9 @@ describe("App component", () => {
 	});
 
 	it("handles fetch error", async () => {
-		axios.get.mockRejectedValue(new Error("Error fetching gallery"));
+		(axios.get as MockedFunction<typeof axios.get>).mockRejectedValue(
+            new Error("Error fetching gallery")
+        );
 
 		render(<App />);
 
