@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, MockedFunction } from "vitest";
 import axios from "axios";
-import App from "./App";
-import { GalleryItem } from "./types/gallery.ts";
+import App from "../App.tsx";
+import { GalleryItem } from "../types/gallery.ts";
 
 vi.mock("axios");
 
