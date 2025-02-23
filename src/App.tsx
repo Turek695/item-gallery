@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import { GalleryItem } from "./types/gallery.ts";
 
 function App() {
-    interface Item {
-        name: string;
-        category?: string;
-        pictures: string;
-        id: number;
-    }
 
-    const [gallery, setGallery] = useState<Item[]>([]);
+    const [gallery, setGallery] = useState<GalleryItem[]>([]);
 
     useEffect(() => {
         const fetchGallery = async () => { 
@@ -25,7 +20,7 @@ function App() {
         fetchGallery();
     }, []);
 
-    const listItems = gallery.map((item: Item) => <li key={item.id}>{item.name}</li>);
+    const listItems = gallery.map((item: GalleryItem) => <li key={item.id}>{item.name}</li>);
 
     return (
         <>
