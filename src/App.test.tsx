@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, MockedFunction } from "vitest";
 import axios from "axios";
 import App from "./App";
+import { GalleryItem } from "./types/gallery.ts";
 
 vi.mock("axios");
 
@@ -13,7 +14,7 @@ describe("App component", () => {
 	});
 
 	it("fetches and displays gallery items", async () => {
-		const mockData = [
+		const mockData: GalleryItem[] = [
             { id: 1, name: "Wazon Zielony", pictures: '["1_1.jpg", "1_2.jpg"]' },
             { id: 2, name: "Szklanki niebieskie", pictures: '["2_1.jpg", "2_2.jpg"]' },
         ];
@@ -24,8 +25,8 @@ describe("App component", () => {
 
 		const items = await screen.findAllByRole("listitem");
 		expect(items).toHaveLength(mockData.length);
-		expect(items[0]).toHaveTextContent("Item 1");
-		expect(items[1]).toHaveTextContent("Item 2");
+		expect(items[0]).toHaveTextContent(mockData[0].name);
+		expect(items[1]).toHaveTextContent(mockData[1].name);
 	});
 
 	it("handles fetch error", async () => {
