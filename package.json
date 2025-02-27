@@ -12,7 +12,6 @@
     "post-commit": "node ./dev_scripts/build-and-deploy.js",
     "zip": "node ./dev_scripts/zip.js",
     "deploy": "node ./dev_scripts/deploy.js",
-    "prepare": "husky"
   },
   "dependencies": {
     "axios": "^1.7.9",
