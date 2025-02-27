@@ -13,7 +13,7 @@ const ftpConfig = {
     password: config.FTP_PASSWORD,
     host: config.FTP_HOST,
     port: config.FTP_PORT,
-    localRoot: `${__dirname}/dist`,
+    localRoot: `${__dirname}/../dist`,
     remoteRoot: config.FTP_DIR,
     include: ["*", "**/*"],
     deleteRemote: false,
