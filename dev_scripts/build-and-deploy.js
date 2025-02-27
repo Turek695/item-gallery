@@ -3,8 +3,8 @@ import { execSync } from "child_process";
 
 try {
     // Stage all changes, including new files
-    execSync("git add -A --quiet");
-	
+    execSync("git add -A");
+
     // Stash any uncommitted changes
     execSync("git stash --quiet");
 
