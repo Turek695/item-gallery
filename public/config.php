@@ -2,6 +2,8 @@
 
 require_once 'env.php';
 
+$env = loadEnv($envPath);
+
 return [
 	'database' => [
 		'host' => $env['DB_HOST'],
