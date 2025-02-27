@@ -2,6 +2,7 @@
 
 require_once 'env.php';
 
+$envPath = '/home/users/turluk69/.env_galeria';
 $env = loadEnv($envPath);
 
 return [

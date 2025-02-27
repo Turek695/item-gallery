@@ -1,5 +1,5 @@
 <?php
-require_once '../env.php';
+require_once '../Database.php';
 
 try {
 	$config = require '../config.php';
