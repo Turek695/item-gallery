@@ -2,9 +2,7 @@
 require '../Database.php';
 
 try {
-	$config = require '../config.php';
-
-	$db = new Database($config['database']);
+	$db = new Database();
 
 	$query = "SELECT id, name, pictures FROM items";
 
