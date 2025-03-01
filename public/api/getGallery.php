@@ -1,5 +1,5 @@
 <?php
-require_once '../Database.php';
+require '../Database.php';
 
 try {
 	$config = require '../config.php';
@@ -8,7 +8,7 @@ try {
 
 	$query = "SELECT id, name, pictures FROM items";
 
-	$items = $db->query("SELECT * FROM gallery")->fetchAll();
+	$items = $db->query($query)->fetchAll();
 
 	echo json_encode($items);
 } catch (PDOException $e) {
